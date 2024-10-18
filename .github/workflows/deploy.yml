@@ -25,7 +25,7 @@ jobs:
 
     - name: Generate static HTML
       run: |
-        poetry run python my_dataset_page/generate_static.py
+        poetry run python generate_static.py
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
