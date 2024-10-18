@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ dataset.title }}</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <header>
+        <h1>{{ dataset.title }}</h1>
+        <p>
+            <strong>Authors:</strong>
+            {% for author in dataset.authors %}
+                {{ author.name }}<sup>{{ author.affiliation }}</sup>{% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+        <p>
+            {% for aff_id, aff_name in dataset.affiliations.items() %}
+                <sup>{{ aff_id }}</sup> {{ aff_name }}<br>
+            {% endfor %}
+        </p>
+    </header>
+
+    <section id="links">
+        <h2>Links</h2>
+        <ul>
+            <li><a href="{{ dataset.paper_link }}" target="_blank">Dataset Paper</a></li>
+            <li><a href="{{ dataset.app_link }}" target="_blank">View Dataset App</a></li>
+            <li><a href="{{ dataset.data_link }}" target="_blank">Download Dataset</a></li>
+            <li><a href="{{ dataset.code_link }}" target="_blank">Source Code</a></li>
+        </ul>
+    </section>
+
+    <section id="sample-image">
+        <h2>Sample Image</h2>
+        <img src="{{ dataset.sample_image }}" alt="Sample image from dataset" style="width:100%;">
+        <figcaption>{{ dataset.image_caption }}</figcaption>
+    </section>
+
+    <section id="abstract">
+        <h2>Abstract</h2>
+        <p>{{ dataset.abstract }}</p>
+    </section>
+
+    <section id="methodology">
+        <h2>Methodology</h2>
+        <p>{{ dataset.methodology }}</p>
+    </section>
+
+    <section id="citation">
+        <h2>How to Cite</h2>
+        <p>To cite this dataset, please use the following BibTeX entry:</p>
+        <pre>{{ dataset.citation }}</pre>
+    </section>
+
+    <section id="related-work">
+        <h2>Related Work</h2>
+        <ul>
+            {% for work in dataset.related_work %}
+                <li><a href="{{ work.link }}" target="_blank">{{ work.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </section>
+</body>
+</html>
