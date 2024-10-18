@@ -2,6 +2,7 @@
 
 import os
 from pathlib import Path
+from re import M
 import shutil
 from flask import Flask, render_template
 
@@ -15,26 +16,37 @@ def generate_static_html():
         "title": "Global, high-resolution plant trait maps combining citizen science and Earth observation",
         "authors": [
             {"name": "Daniel Lusk", "affiliation": 1},
+            {"name": "Sophie Wolf", "affiliation": 2},
+            {"name": "Daria Svidzinska", "affiliation": 2},
+            {"name": "Jens Kattge", "affiliation": "3,4"},
+            {"name": "Francesco Maria Sabatini", "affiliation": "3,5,6"},
+            {"name": "Álvaro Moreno Martínez", "affiliation": 7},
             {"name": "Teja Kattenborn", "affiliation": 1},
         ],
         "affiliations": {
-            1: "Sensor-based Geoinformatics, University of Freiburg",
-            2: "Institute of AI Research",
+            1: "Sensor-based Geoinformatics, University of Freiburg, Germany",
+            2: "Remote Sensing Centre for Earth System Research, Leipzig University, Germany",
+            3: "German Centre for Integrative Biodiversity Research (iDiv) Halle-Jena-Leipzig, Germany",
+            4: "Max Planck Institute for Biogeochemistry, Germany",
+            5: "Department of Biological, Geological and Environmental Sciences (BiGeA), Alma Mater Studiorum University of Bologna, Italy",
+            6: "Institute of Biology/Geobotany and Botanical Garden, Martin Luther University Halle-Wittenberg, Germany",
+            7: "Image Signal Processing Group, Image Processing Laboratory (IPL), University of Valencia, Spain",
         },
         "paper_link": "https://example.com/dataset-paper",
         "app_link": "https://example.com/view-dataset-app",
         "data_link": "https://example.com/download-dataset",
         "code_link": "https://github.com/username/dataset-source-code",
-        "sample_image": "static/images/sample_image.jpg",
-        "image_caption": "Sample image from the dataset.",
-        "abstract": "This dataset contains ... [your dataset abstract here].",
+        "image_title": "33 functional traits at 1 km resolution",
+        "sample_image": "static/images/exemplar.png",
+        "image_caption": "Global mean plant height in meters at 0.01° (~1 km) resolution presented in Equal Earth projection.",
+        "abstract": "Functional diversity has been recognized as a key driver of ecosystem resilience and resistance, yet our understanding of global patterns of functional diversity is constrained to specific regions or geographically limited datasets. Meanwhile, rapidly growing citizen science initiatives, such as iNaturalist or Pl@ntNet, have generated millions of ground-level species observations across the globe. Despite being noisy and opportunistically sampled, previous studies have shown that integrating such citizen science species observations with large functional trait databases enables the creation of global trait maps with unprecedented accuracy. However, aggregating citizen science data allows for the generation of sparse and relatively coarse trait maps, e.g. at 0.2 to 2.0 degree spatial resolution. Here, by using such citizen science data in concert with high-resolution Earth observation data, we extend this approach to model the relationships between functional traits and their structural and environmental determinants, providing global trait maps with globally continuous coverage and unprecedented spatial resolution (up to 1km). This fusion of ground-based citizen science and continuous satellite data allows us not only to map more 20 ecologically relevant traits but also to derive crucial functional diversity metrics at a global scale. These metrics—such as functional richness and evenness—provide new opportunities to explore the role of functional diversity in ecosystem stability, particularly in response to climate extremes associated with climate change. Our approach presents a scalable framework to advance understanding of plant functional traits and diversity, opening the door to new insights on how ecosystems may respond to an increasingly variable and extreme climate.",
         "methodology": "We collected data using ... [methodology details].",
         "citation": """
         @misc{doe2024dataset,
           author = {John Doe and Jane Smith},
           title = {My Amazing Dataset},
           year = {2024},
-          howpublished = {\\url{https://github.com/username/dataset-repo}},
+          howpublished = {\\url{https://github.com/username/dataset-repo}}
         }
         """,
         "related_work": [

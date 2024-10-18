@@ -1,58 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Global, high-resolution plant trait maps combining citizen science and Earth observation</title>
-    <link rel="stylesheet" href="static/style.css">
-</head>
-<body>
-    <header>
-        <h1>Global, high-resolution plant trait maps combining citizen science and Earth observation</h1>
-        <p>
-            <strong>Authors:</strong>
-            
-                Daniel Lusk<sup>1</sup>, 
-            
-                Teja Kattenborn<sup>1</sup>
-            
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="static/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1 class="title">Global, high-resolution plant trait maps combining citizen science and Earth observation</h1>
+        <h2 class="authors">
+           Daniel Lusk<sup
+            >1</sup
+          >,   Sophie Wolf<sup
+            >2</sup
+          >,   Daria Svidzinska<sup
+            >2</sup
+          >,   Jens Kattge<sup
+            >3,4</sup
+          >,   Francesco Maria Sabatini<sup
+            >3,5,6</sup
+          >,   Álvaro Moreno Martínez<sup
+            >7</sup
+          >,   Teja Kattenborn<sup
+            >1</sup
+          > 
+        </h2>
+        <p class="affiliations">
+          
+          <sup>1</sup> Sensor-based Geoinformatics, University of Freiburg, Germany<br />
+          
+          <sup>2</sup> Remote Sensing Centre for Earth System Research, Leipzig University, Germany<br />
+          
+          <sup>3</sup> German Centre for Integrative Biodiversity Research (iDiv) Halle-Jena-Leipzig, Germany<br />
+          
+          <sup>4</sup> Max Planck Institute for Biogeochemistry, Germany<br />
+          
+          <sup>5</sup> Department of Biological, Geological and Environmental Sciences (BiGeA), Alma Mater Studiorum University of Bologna, Italy<br />
+          
+          <sup>6</sup> Institute of Biology/Geobotany and Botanical Garden, Martin Luther University Halle-Wittenberg, Germany<br />
+          
+          <sup>7</sup> Image Signal Processing Group, Image Processing Laboratory (IPL), University of Valencia, Spain<br />
+          
         </p>
-        <p>
-            
-                <sup>1</sup> Sensor-based Geoinformatics, University of Freiburg<br>
-            
-                <sup>2</sup> Institute of AI Research<br>
-            
-        </p>
-    </header>
+      </header>
 
-    <section id="links">
-        <h2>Links</h2>
+      <section id="sample-image">
+        <div class="img-container">
+          <h2 class="img-title">33 functional traits at 1 km resolution</h2>
+          <img
+            src="static/images/exemplar.png"
+            alt="Sample image from dataset"
+          />
+          <figcaption>Global mean plant height in meters at 0.01° (~1 km) resolution presented in Equal Earth projection.</figcaption>
+        </div>
+      </section>
+
+      <section id="links">
+        <!-- <h2>Links</h2> -->
         <ul>
-            <li><a href="https://example.com/dataset-paper" target="_blank">Dataset Paper</a></li>
-            <li><a href="https://example.com/view-dataset-app" target="_blank">View Dataset App</a></li>
-            <li><a href="https://example.com/download-dataset" target="_blank">Download Dataset</a></li>
-            <li><a href="https://github.com/username/dataset-source-code" target="_blank">Source Code</a></li>
+          <li>
+            <a href="https://example.com/dataset-paper" target="_blank"
+              ><i class="fas fa-file-alt"></i> Paper</a
+            >
+          </li>
+          <li>
+            <a href="https://example.com/view-dataset-app" target="_blank"
+              ><i class="fas fa-earth-europe"></i> App</a
+            >
+          </li>
+          <li>
+            <a href="https://example.com/download-dataset" target="_blank"
+              ><i class="fas fa-database"></i> Data</a
+            >
+          </li>
+          <li>
+            <a href="https://github.com/username/dataset-source-code" target="_blank"
+              ><i class="fas fa-code-branch"></i> Code</a
+            >
+          </li>
         </ul>
-    </section>
+      </section>
 
-    <section id="sample-image">
-        <h2>Sample Image</h2>
-        <img src="static/images/sample_image.jpg" alt="Sample image from dataset" style="width:100%;">
-        <figcaption>Sample image from the dataset.</figcaption>
-    </section>
-
-    <section id="abstract">
+      <section id="abstract">
         <h2>Abstract</h2>
-        <p>This dataset contains ... [your dataset abstract here].</p>
-    </section>
+        <p>Functional diversity has been recognized as a key driver of ecosystem resilience and resistance, yet our understanding of global patterns of functional diversity is constrained to specific regions or geographically limited datasets. Meanwhile, rapidly growing citizen science initiatives, such as iNaturalist or Pl@ntNet, have generated millions of ground-level species observations across the globe. Despite being noisy and opportunistically sampled, previous studies have shown that integrating such citizen science species observations with large functional trait databases enables the creation of global trait maps with unprecedented accuracy. However, aggregating citizen science data allows for the generation of sparse and relatively coarse trait maps, e.g. at 0.2 to 2.0 degree spatial resolution. Here, by using such citizen science data in concert with high-resolution Earth observation data, we extend this approach to model the relationships between functional traits and their structural and environmental determinants, providing global trait maps with globally continuous coverage and unprecedented spatial resolution (up to 1km). This fusion of ground-based citizen science and continuous satellite data allows us not only to map more 20 ecologically relevant traits but also to derive crucial functional diversity metrics at a global scale. These metrics—such as functional richness and evenness—provide new opportunities to explore the role of functional diversity in ecosystem stability, particularly in response to climate extremes associated with climate change. Our approach presents a scalable framework to advance understanding of plant functional traits and diversity, opening the door to new insights on how ecosystems may respond to an increasingly variable and extreme climate.</p>
+      </section>
 
-    <section id="methodology">
+      <section id="methodology">
         <h2>Methodology</h2>
         <p>We collected data using ... [methodology details].</p>
-    </section>
+      </section>
 
-    <section id="citation">
+      <section id="citation">
         <h2>How to Cite</h2>
         <p>To cite this dataset, please use the following BibTeX entry:</p>
         <pre>
@@ -60,20 +119,25 @@
           author = {John Doe and Jane Smith},
           title = {My Amazing Dataset},
           year = {2024},
-          howpublished = {\url{https://github.com/username/dataset-repo}},
+          howpublished = {\url{https://github.com/username/dataset-repo}}
         }
         </pre>
-    </section>
+      </section>
 
-    <section id="related-work">
+      <section id="related-work">
         <h2>Related Work</h2>
         <ul>
-            
-                <li><a href="https://example.com/related1" target="_blank">Related Work 1</a></li>
-            
-                <li><a href="https://example.com/related2" target="_blank">Related Work 2</a></li>
-            
+          
+          <li>
+            <a href="https://example.com/related1" target="_blank">Related Work 1</a>
+          </li>
+          
+          <li>
+            <a href="https://example.com/related2" target="_blank">Related Work 2</a>
+          </li>
+          
         </ul>
-    </section>
-</body>
+      </section>
+    </div>
+  </body>
 </html>

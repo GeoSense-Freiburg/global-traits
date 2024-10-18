@@ -1,66 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ dataset.title }}</title>
-    <link rel="stylesheet" href="static/style.css">
-</head>
-<body>
-    <header>
-        <h1>{{ dataset.title }}</h1>
-        <p>
-            <strong>Authors:</strong>
-            {% for author in dataset.authors %}
-                {{ author.name }}<sup>{{ author.affiliation }}</sup>{% if not loop.last %}, {% endif %}
-            {% endfor %}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="static/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1 class="title">{{ dataset.title }}</h1>
+        <h2 class="authors">
+          {% for author in dataset.authors %} {{ author.name }}<sup
+            >{{ author.affiliation }}</sup
+          >{% if not loop.last %}, {% endif %} {% endfor %}
+        </h2>
+        <p class="affiliations">
+          {% for aff_id, aff_name in dataset.affiliations.items() %}
+          <sup>{{ aff_id }}</sup> {{ aff_name }}<br />
+          {% endfor %}
         </p>
-        <p>
-            {% for aff_id, aff_name in dataset.affiliations.items() %}
-                <sup>{{ aff_id }}</sup> {{ aff_name }}<br>
-            {% endfor %}
-        </p>
-    </header>
+      </header>
 
-    <section id="links">
-        <h2>Links</h2>
+      <section id="sample-image">
+        <div class="img-container">
+          <h2 class="img-title">{{ dataset.image_title }}</h2>
+          <img
+            src="{{ dataset.sample_image }}"
+            alt="Sample image from dataset"
+          />
+          <figcaption>{{ dataset.image_caption }}</figcaption>
+        </div>
+      </section>
+
+      <section id="links">
+        <!-- <h2>Links</h2> -->
         <ul>
-            <li><a href="{{ dataset.paper_link }}" target="_blank">Dataset Paper</a></li>
-            <li><a href="{{ dataset.app_link }}" target="_blank">View Dataset App</a></li>
-            <li><a href="{{ dataset.data_link }}" target="_blank">Download Dataset</a></li>
-            <li><a href="{{ dataset.code_link }}" target="_blank">Source Code</a></li>
+          <li>
+            <a href="{{ dataset.paper_link }}" target="_blank"
+              ><i class="fas fa-file-alt"></i> Paper</a
+            >
+          </li>
+          <li>
+            <a href="{{ dataset.app_link }}" target="_blank"
+              ><i class="fas fa-earth-europe"></i> App</a
+            >
+          </li>
+          <li>
+            <a href="{{ dataset.data_link }}" target="_blank"
+              ><i class="fas fa-database"></i> Data</a
+            >
+          </li>
+          <li>
+            <a href="{{ dataset.code_link }}" target="_blank"
+              ><i class="fas fa-code-branch"></i> Code</a
+            >
+          </li>
         </ul>
-    </section>
+      </section>
 
-    <section id="sample-image">
-        <h2>Sample Image</h2>
-        <img src="{{ dataset.sample_image }}" alt="Sample image from dataset" style="width:100%;">
-        <figcaption>{{ dataset.image_caption }}</figcaption>
-    </section>
-
-    <section id="abstract">
+      <section id="abstract">
         <h2>Abstract</h2>
         <p>{{ dataset.abstract }}</p>
-    </section>
+      </section>
 
-    <section id="methodology">
+      <section id="methodology">
         <h2>Methodology</h2>
         <p>{{ dataset.methodology }}</p>
-    </section>
+      </section>
 
-    <section id="citation">
+      <section id="citation">
         <h2>How to Cite</h2>
         <p>To cite this dataset, please use the following BibTeX entry:</p>
         <pre>{{ dataset.citation }}</pre>
-    </section>
+      </section>
 
-    <section id="related-work">
+      <section id="related-work">
         <h2>Related Work</h2>
         <ul>
-            {% for work in dataset.related_work %}
-                <li><a href="{{ work.link }}" target="_blank">{{ work.title }}</a></li>
-            {% endfor %}
+          {% for work in dataset.related_work %}
+          <li>
+            <a href="{{ work.link }}" target="_blank">{{ work.title }}</a>
+          </li>
+          {% endfor %}
         </ul>
-    </section>
-</body>
+      </section>
+    </div>
+  </body>
 </html>
