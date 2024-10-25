@@ -100,7 +100,11 @@
 
       <section id="methodology">
         <h2>Methodology</h2>
-        <p>Crowd-sourced vegetation occurrences from GBIF (which species observations from contains popular citizen science initiatives such as iNaturalist and Pl@ntNet, among many others) and curated plot-level species abundances from sPlot were matched with mean species trait values from the TRY Trait Database. Ensemble gradient-boosting models were trained for each trait as a function of environmental and Earth observation data.&lt;br&gt;&lt;br&gt;The Earth observation data used in this experiment were: MODIS surface reflectance, SoilGrids2.0 soil properties, WorldClim Bioclimatic variables, and the Vegetation Optical Depth Climate Archive (VODCA).</p>
+        <p>
+        Crowd-sourced vegetation occurrences from GBIF (which species observations from contains popular citizen science initiatives such as iNaturalist and Pl@ntNet, among many others) and curated plot-level species abundances from sPlot were matched with mean species trait values from the TRY Trait Database. Ensemble gradient-boosting models were trained for each trait as a function of environmental and Earth observation data.
+        <br><br>
+        Earth observation datasets used as predictors include: MODIS surface reflectance, SoilGrids2.0 soil properties, WorldClim Bioclimatic variables, and the Vegetation Optical Depth Climate Archive (VODCA).
+        </p>
         <img
           src="static/images/methodology.png"
           alt="Methodology image"
@@ -118,6 +122,12 @@
         <br>
         <br>
         For questions, please contact Daniel Lusk (<a href="mailto:daniel.lusk@geosense.uni-freiburg.de">daniel.lusk [at] geosense.uni-freiburg.de</a>).
+        <br>
+        <br>
+        These products have been created in the framework of the PANOPS project. More information on this project is available at:
+        <ul>
+            <li><a href="https://uni-freiburg.de/enr-geosense/research/panops/" target="_blank">https://uni-freiburg.de/enr-geosense/research/panops/</a></li>
+            <li><a href="https://gepris-extern.dfg.de/gepris/projekt/504978936?language=en" target="_blank">https://gepris-extern.dfg.de/gepris/projekt/504978936?language=en</a></li>
 
         </p>
         <div class="links">
@@ -392,18 +402,18 @@
         </table>
       </section>
 
-      <!-- <section id="citation">
+      <section id="citation">
         <h2>How to Cite</h2>
         <p>To cite this dataset, please use the following BibTeX entry:</p>
         <pre>
-        @misc{doe2024dataset,
-          author = {John Doe and Jane Smith},
-          title = {My Amazing Dataset},
+        @misc{citscitraits2024dataset,
+          authors = {Daniel Lusk, Sophie Wolf, Daria Svidzinska, Jens Kattge, Francesco Maria Sabatini, Álvaro Moreno Martínez, Teja Kattenborn},
+          title = {Global, high-resolution plant trait maps combining citizen science and Earth observation},
           year = {2024},
-          howpublished = {\url{https://github.com/username/dataset-repo}}
+          howpublished = {\url{https://kattenborn.go.bwsfs.uni-freiburg.de:11443/web/client/pubshares/2pxZ92URZ2jMdAuCxereHf/browse}}
         }
         </pre>
-      </section> -->
+      </section>
 
       <section id="related-work">
         <h2>Related Work</h2>

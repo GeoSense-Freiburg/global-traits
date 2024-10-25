@@ -73,7 +73,7 @@
 
       <section id="methodology">
         <h2>Methodology</h2>
-        <p>{{ dataset.methodology }}</p>
+        <p>{{ dataset.methodology | safe}}</p>
         <img
           src="{{ dataset.methodology_image }}"
           alt="Methodology image"
@@ -357,11 +357,11 @@
         </table>
       </section>
 
-      <!-- <section id="citation">
+      <section id="citation">
         <h2>How to Cite</h2>
         <p>To cite this dataset, please use the following BibTeX entry:</p>
         <pre>{{ dataset.citation }}</pre>
-      </section> -->
+      </section>
 
       <section id="related-work">
         <h2>Related Work</h2>

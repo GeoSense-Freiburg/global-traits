@@ -102,7 +102,11 @@ def generate_static_html():
         <br><br>
         Here, by using such citizen science data in concert with high-resolution Earth observation data, we extend this approach to model the relationships between functional traits and their structural and environmental determinants, providing global trait maps with globally continuous coverage and unprecedented spatial resolution (up to 1km). This fusion of ground-based citizen science and continuous satellite data allows us not only to map more 20 ecologically relevant traits but also to derive crucial functional diversity metrics at a global scale. These metrics—such as functional richness and evenness—provide new opportunities to explore the role of functional diversity in ecosystem stability, particularly in response to climate extremes associated with climate change. Our approach presents a scalable framework to advance understanding of plant functional traits and diversity, opening the door to new insights on how ecosystems may respond to an increasingly variable and extreme climate.
         """,
-        "methodology": "Crowd-sourced vegetation occurrences from GBIF (which species observations from contains popular citizen science initiatives such as iNaturalist and Pl@ntNet, among many others) and curated plot-level species abundances from sPlot were matched with mean species trait values from the TRY Trait Database. Ensemble gradient-boosting models were trained for each trait as a function of environmental and Earth observation data.<br><br>The Earth observation data used in this experiment were: MODIS surface reflectance, SoilGrids2.0 soil properties, WorldClim Bioclimatic variables, and the Vegetation Optical Depth Climate Archive (VODCA).",
+        "methodology": """
+        Crowd-sourced vegetation occurrences from GBIF (which species observations from contains popular citizen science initiatives such as iNaturalist and Pl@ntNet, among many others) and curated plot-level species abundances from sPlot were matched with mean species trait values from the TRY Trait Database. Ensemble gradient-boosting models were trained for each trait as a function of environmental and Earth observation data.
+        <br><br>
+        Earth observation datasets used as predictors include: MODIS surface reflectance, SoilGrids2.0 soil properties, WorldClim Bioclimatic variables, and the Vegetation Optical Depth Climate Archive (VODCA).
+        """,
         "methodology_image": "static/images/methodology.png",
         "usage_notes": """
         Here you can find maps of 33 plant functional traits as defined in the <a href="https://www.try-db.org/" target="_blank" alt=TRY Plant Trait Database>TRY Plant Trait Database</a> with a resolution of 0.01°°(~1.1 km at the equator) and a global extent. The maps are extrapolations by ensemble models trained on ~40 million citizen science species observations from the <a href="https://www.gbif.org/" target="_blank" alt=Global Biodiversity Information Facility">Global Biodiversity Information Facility</a> as well as scientific species abundances recorded in the <a href="https://www.idiv.de/en/splot.html" target="_blank" alt="sPlot">sPlot</a> database in combination with TRY trait data and global Earth observation datasets.
@@ -112,14 +116,20 @@ def generate_static_html():
         <br>
         <br>
         For questions, please contact Daniel Lusk (<a href="mailto:daniel.lusk@geosense.uni-freiburg.de">daniel.lusk [at] geosense.uni-freiburg.de</a>).
+        <br>
+        <br>
+        These products have been created in the framework of the PANOPS project. More information on this project is available at:
+        <ul>
+            <li><a href="https://uni-freiburg.de/enr-geosense/research/panops/" target="_blank">https://uni-freiburg.de/enr-geosense/research/panops/</a></li>
+            <li><a href="https://gepris-extern.dfg.de/gepris/projekt/504978936?language=en" target="_blank">https://gepris-extern.dfg.de/gepris/projekt/504978936?language=en</a></li>
 
         """,
         "citation": """
-        @misc{doe2024dataset,
-          author = {John Doe and Jane Smith},
-          title = {My Amazing Dataset},
+        @misc{citscitraits2024dataset,
+          authors = {Daniel Lusk, Sophie Wolf, Daria Svidzinska, Jens Kattge, Francesco Maria Sabatini, Álvaro Moreno Martínez, Teja Kattenborn},
+          title = {Global, high-resolution plant trait maps combining citizen science and Earth observation},
           year = {2024},
-          howpublished = {\\url{https://github.com/username/dataset-repo}}
+          howpublished = {\\url{https://kattenborn.go.bwsfs.uni-freiburg.de:11443/web/client/pubshares/2pxZ92URZ2jMdAuCxereHf/browse}}
         }
         """,
         "related_work": [
