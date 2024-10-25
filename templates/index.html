@@ -29,9 +29,10 @@
       <header>
         <h1 class="title">{{ dataset.title }}</h1>
         <h2 class="authors">
-          {% for author in dataset.authors %} {{ author.name }}<sup
-            >{{ author.affiliation }}</sup
-          >{% if not loop.last %}, {% endif %} {% endfor %}
+          {% for author in dataset.authors %}
+          <a href="{{author.link}}" target="_blank">{{ author.name }}</a
+          ><sup>{{ author.affiliation }}</sup>{% if not loop.last %}, {% endif
+          %} {% endfor %}
         </h2>
         <p class="affiliations">
           {% for aff_id, aff_name in dataset.affiliations.items() %}
@@ -51,47 +52,316 @@
         </div>
       </section>
 
-      <section id="links">
+      <section class="links">
         <!-- <h2>Links</h2> -->
         <ul>
+          {% for button in dataset.buttons %}
           <li>
-            <a href="{{ dataset.paper_link }}" target="_blank"
-              ><i class="fas fa-file-alt"></i> Paper</a
+            <a href="{{ button.link }}" target="_blank" alt="{{ button.alt }}"
+              ><i class="fas fa-{{ button.icon }}"></i
+              ><span>{{ button.text }}</span></a
             >
           </li>
-          <li>
-            <a href="{{ dataset.app_link }}" target="_blank"
-              ><i class="fas fa-earth-europe"></i> App</a
-            >
-          </li>
-          <li>
-            <a href="{{ dataset.data_link }}" target="_blank"
-              ><i class="fas fa-database"></i> Data</a
-            >
-          </li>
-          <li>
-            <a href="{{ dataset.code_link }}" target="_blank"
-              ><i class="fas fa-code-branch"></i> Code</a
-            >
-          </li>
+          {% endfor %}
         </ul>
       </section>
 
       <section id="abstract">
         <h2>Abstract</h2>
-        <p>{{ dataset.abstract }}</p>
+        <p>{{ dataset.abstract | safe}}</p>
       </section>
 
       <section id="methodology">
         <h2>Methodology</h2>
         <p>{{ dataset.methodology }}</p>
+        <img
+          src="{{ dataset.methodology_image }}"
+          alt="Methodology image"
+          width="100%"
+        />
       </section>
 
-      <section id="citation">
+      <section id="usage-notes">
+        <h2>Usage Notes</h2>
+        <p>{{ dataset.usage_notes | safe}}</p>
+        <div class="links">
+          <ul>
+            {% for button in dataset.buttons %} {% if button.text == "Download"
+            %}
+            <li>
+              <a href="{{ button.link }}" target="_blank" alt="{{ button.alt }}"
+                ><i class="fas fa-{{ button.icon }}"></i
+                ><span>{{ button.text }}</span></a
+              >
+            </li>
+            {% endif %} {% endfor %}
+          </ul>
+        </div>
+        <h3>Trait descriptions</h3>
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align: left">TRY Trait ID</th>
+              <th style="text-align: left">Short name</th>
+              <th style="text-align: left">Long name</th>
+              <th style="text-align: left">Units</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: left">X27</td>
+              <td style="text-align: left">Seed length</td>
+              <td style="text-align: left">Seed length</td>
+              <td style="text-align: left">mm</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X11</td>
+              <td style="text-align: left">SLA</td>
+              <td style="text-align: left">
+                Leaf area per leaf dry mass (specific leaf area, SLA or 1/LMA):
+                undefined if petiole is included or excluded)
+              </td>
+              <td style="text-align: left">m² kg⁻¹</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X6</td>
+              <td style="text-align: left">RRD</td>
+              <td style="text-align: left">Root rooting depth</td>
+              <td style="text-align: left">m</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X50</td>
+              <td style="text-align: left">Leaf N (area)</td>
+              <td style="text-align: left">
+                Leaf nitrogen (N) content per leaf area
+              </td>
+              <td style="text-align: left">g m⁻²</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X237</td>
+              <td style="text-align: left">Dispersal unit length</td>
+              <td style="text-align: left">Dispersal unit length</td>
+              <td style="text-align: left">mm</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X4</td>
+              <td style="text-align: left">SSD</td>
+              <td style="text-align: left">
+                Stem specific density (SSD) or wood density (stem dry mass per
+                stem fresh volume)
+              </td>
+              <td style="text-align: left">g cm³</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X46</td>
+              <td style="text-align: left">Leaf thickness</td>
+              <td style="text-align: left">Leaf thickness</td>
+              <td style="text-align: left">mm</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X78</td>
+              <td style="text-align: left">Leaf delta 15N</td>
+              <td style="text-align: left">
+                Leaf nitrogen (N) isotope signature (delta 15N)
+              </td>
+              <td style="text-align: left">ppm</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X15</td>
+              <td style="text-align: left">Leaf P</td>
+              <td style="text-align: left">
+                Leaf phosphorus (P) content per leaf dry mass
+              </td>
+              <td style="text-align: left">mg g⁻¹</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X169</td>
+              <td style="text-align: left">Stem conduit density</td>
+              <td style="text-align: left">
+                Stem conduit density (vessels and tracheids)
+              </td>
+              <td style="text-align: left">mm⁻²</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X47</td>
+              <td style="text-align: left">LDMC</td>
+              <td style="text-align: left">
+                Leaf dry mass per leaf fresh mass (leaf dry matter content,
+                LDMC)
+              </td>
+              <td style="text-align: left">g g⁻¹</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X18</td>
+              <td style="text-align: left">Plant height</td>
+              <td style="text-align: left">Plant height</td>
+              <td style="text-align: left">m</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X224</td>
+              <td style="text-align: left">Chromosome cDNA content</td>
+              <td style="text-align: left">
+                Species genotype: chromosome cDNA content
+              </td>
+              <td style="text-align: left">Gb</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X145</td>
+              <td style="text-align: left">Leaf width</td>
+              <td style="text-align: left">Leaf width</td>
+              <td style="text-align: left">mm</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X14</td>
+              <td style="text-align: left">Leaf N (mass)</td>
+              <td style="text-align: left">
+                Leaf nitrogen (N) content per leaf dry mass
+              </td>
+              <td style="text-align: left">mg g⁻¹</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X55</td>
+              <td style="text-align: left">Leaf dry mass</td>
+              <td style="text-align: left">Leaf dry mass (single leaf)</td>
+              <td style="text-align: left">g</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X3120</td>
+              <td style="text-align: left">Leaf water content</td>
+              <td style="text-align: left">
+                Leaf water content per leaf dry mass (not saturated)
+              </td>
+              <td style="text-align: left">g g⁻¹</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X26</td>
+              <td style="text-align: left">Seed mass</td>
+              <td style="text-align: left">Seed dry mass</td>
+              <td style="text-align: left">mg</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X3112</td>
+              <td style="text-align: left">Leaf area</td>
+              <td style="text-align: left">
+                Leaf area (in case of compound leaves: leaf, undefined if
+                petiole in- or excluded)
+              </td>
+              <td style="text-align: left">mm²</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X1080</td>
+              <td style="text-align: left">SRL</td>
+              <td style="text-align: left">
+                Root length per root dry mass (specific root length, SRL)
+              </td>
+              <td style="text-align: left">cm g</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X3114</td>
+              <td style="text-align: left">Leaf area</td>
+              <td style="text-align: left">
+                Leaf area (in case of compound leaves: undefined if leaf or
+                leaflet, undefined if petiole is in- or excluded)
+              </td>
+              <td style="text-align: left">mm²</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X13</td>
+              <td style="text-align: left">Leaf C</td>
+              <td style="text-align: left">
+                Leaf carbon (C) content per leaf dry mass
+              </td>
+              <td style="text-align: left">mg g⁻¹</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X163</td>
+              <td style="text-align: left">Leaf fresh mass</td>
+              <td style="text-align: left">Leaf fresh mass</td>
+              <td style="text-align: left">g</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X21</td>
+              <td style="text-align: left">Stem diameter</td>
+              <td style="text-align: left">Stem diameter</td>
+              <td style="text-align: left">m</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X146</td>
+              <td style="text-align: left">Leaf C/N ratio</td>
+              <td style="text-align: left">Leaf carbon/nitrogen (C/N) ratio</td>
+              <td style="text-align: left">g g⁻¹</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X3113</td>
+              <td style="text-align: left">Leaf area</td>
+              <td style="text-align: left">
+                Leaf area (in case of compound leaves: leaflet, undefined if
+                petiole is in- or excluded)
+              </td>
+              <td style="text-align: left">mm²</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X144</td>
+              <td style="text-align: left">Leaf length</td>
+              <td style="text-align: left">Leaf length</td>
+              <td style="text-align: left">mm</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X281</td>
+              <td style="text-align: left">Stem conduit diameter</td>
+              <td style="text-align: left">
+                Stem conduit diameter (vessels, tracheids)
+              </td>
+              <td style="text-align: left">µm</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X282</td>
+              <td style="text-align: left">Conduit element length</td>
+              <td style="text-align: left">
+                Wood vessel element length; stem conduit (vessel and tracheids)
+                element length
+              </td>
+              <td style="text-align: left">µm</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X223</td>
+              <td style="text-align: left">Chromosome number</td>
+              <td style="text-align: left">
+                Species genotype: chromosome number
+              </td>
+              <td style="text-align: left">-</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X289</td>
+              <td style="text-align: left">Wood fiber lengths</td>
+              <td style="text-align: left">Wood fiber lengths</td>
+              <td style="text-align: left">µm</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X95</td>
+              <td style="text-align: left">Seed germination rate</td>
+              <td style="text-align: left">
+                Seed germination rate (germination efficiency)
+              </td>
+              <td style="text-align: left">days</td>
+            </tr>
+            <tr>
+              <td style="text-align: left">X138</td>
+              <td style="text-align: left">Seed number</td>
+              <td style="text-align: left">
+                Seed number per reproduction unit
+              </td>
+              <td style="text-align: left">-</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- <section id="citation">
         <h2>How to Cite</h2>
         <p>To cite this dataset, please use the following BibTeX entry:</p>
         <pre>{{ dataset.citation }}</pre>
-      </section>
+      </section> -->
 
       <section id="related-work">
         <h2>Related Work</h2>
@@ -103,6 +373,11 @@
           {% endfor %}
         </ul>
       </section>
+      <footer>
+        <p>
+          &copy; {{ dataset.current_year }} Daniel Lusk. All rights reserved.
+        </p>
+      </footer>
     </div>
   </body>
 </html>
