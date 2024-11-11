@@ -46,6 +46,18 @@ def generate_static_html():
                 "orcid": "0000-0002-7202-7697",
             },
             {
+                "name": "Helge Bruelheide",
+                "affiliation": "6",
+                "link": "https://www.botanik.uni-halle.de/geobotanik/helge_bruelheide/",
+                "orcid": "0000-0003-3135-0356",
+            },
+            {
+                "name": "Gabriella Damasceno",
+                "affiliation": "3,6",
+                "link": "https://www.idiv.de/en/profile/1716.html",
+                "orcid": "0000-0001-5103-484X",
+            },
+            {
                 "name": "Álvaro Moreno Martínez",
                 "affiliation": 7,
                 "link": "https://www.researchgate.net/profile/Alvaro-Moreno-2",
@@ -126,7 +138,7 @@ def generate_static_html():
         """,
         "citation": """
         @misc{citscitraits2024dataset,
-          authors = {Daniel Lusk, Sophie Wolf, Daria Svidzinska, Jens Kattge, Francesco Maria Sabatini, Álvaro Moreno Martínez, Teja Kattenborn},
+          authors = {Daniel Lusk, Sophie Wolf, Daria Svidzinska, Jens Kattge, Francesco Maria Sabatini, Helge Bruelheide, Gabriella Damasceno, Álvaro Moreno Martínez, Teja Kattenborn},
           title = {Global, high-resolution plant trait maps combining citizen science and Earth observation},
           year = {2024},
           howpublished = {\\url{https://kattenborn.go.bwsfs.uni-freiburg.de:11443/web/client/pubshares/2pxZ92URZ2jMdAuCxereHf/browse}}
