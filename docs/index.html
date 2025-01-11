@@ -38,14 +38,6 @@
           ><sup>2</sup>,  
           <a href="https://www.bgc-jena.mpg.de/person/jkattge/4965278" target="_blank">Jens Kattge</a
           ><sup>3,4</sup>,  
-          <a href="https://www.unibo.it/sitoweb/francescomaria.sabatini/en" target="_blank">Francesco Maria Sabatini</a
-          ><sup>3,5,6</sup>,  
-          <a href="https://www.botanik.uni-halle.de/geobotanik/helge_bruelheide/" target="_blank">Helge Bruelheide</a
-          ><sup>6</sup>,  
-          <a href="https://www.idiv.de/en/profile/1716.html" target="_blank">Gabriella Damasceno</a
-          ><sup>3,6</sup>,  
-          <a href="https://www.researchgate.net/profile/Alvaro-Moreno-2" target="_blank">Álvaro Moreno Martínez</a
-          ><sup>7</sup>,  
           <a href="https://uni-freiburg.de/enr-geosense/team/kattenborn/" target="_blank">Teja Kattenborn</a
           ><sup>1</sup> 
         </h2>
@@ -96,16 +88,14 @@
       <section id="abstract">
         <h2>Abstract</h2>
         <p>
-        The acceleration of global environmental change underscores the pressing need for a comprehensive understanding of how the biosphere interacts with its environment. To reliably examine these connections across diverse ecosystems, having spatially continuous data on plant functional traits is imperative. Trait databases such as TRY boast an extensive repository of plant trait measurements for thousands of species for individual locations. Previous approaches have attempted to spatially extrapolate such local trait measurements using environmental predictors or Earth observation data. Thereby, a common challenge is the scarcity of the original data, which leads to significant uncertainty in the extrapolations in data-scarce regions. Meanwhile, rapidly growing citizen science initiatives, such as iNaturalist or Pl@ntNet, have generated millions of ground-level species observations across the globe. Despite being noisy and opportunistically sampled, previous studies have shown that integrating such citizen science species observations with large functional trait databases enables the creation of global trait maps with unprecedented accuracy. However, aggregating citizen science data only allows for the generation of sparse and relatively coarse trait maps, e.g. at 0.2 to 2.0 degree spatial resolution.
-        <br><br>
-        Here, by using such citizen science data in concert with high-resolution Earth observation data, we extend this approach to model the relationships between functional traits and their structural and environmental determinants, providing global trait maps with globally continuous coverage and unprecedented spatial resolution (up to 1km). This fusion of ground-based citizen science and continuous satellite data allows us not only to map more 20 ecologically relevant traits but also to derive crucial functional diversity metrics at a global scale. These metrics—such as functional richness and evenness—provide new opportunities to explore the role of functional diversity in ecosystem stability, particularly in response to climate extremes associated with climate change. Our approach presents a scalable framework to advance understanding of plant functional traits and diversity, opening the door to new insights on how ecosystems may respond to an increasingly variable and extreme climate.
+        Plant functional traits describe the form and function of plant communities and are vital to understanding the mechanics of the terrestrial biosphere, yet knowledge of their global distribution remains limited to specific regions and geographically restricted datasets. Meanwhile, rapidly growing citizen science initiatives have generated hundreds of millions of ground-level species observations across the globe. While previous studies have shown the integration of citizen science observations with large functional trait databases can enable the creation of global trait maps with promising accuracy, citizen science data alone remains insufficient to facilitate trait mapping at high resolutions due to noise caused by opportunistic collection practices. Recently curated aggregations of professional vegetation surveys offer higher-quality observations, but are comparatively few in number. Fortunately, large Earth observation datasets present an opportunity to help bridge these gaps due to their high resolution and global coverage. Here, we combine the multivariate strengths of citizen science, vegetation surveys, and Earth observation data to model the relationships between functional traits and their structural and environmental determinants, yielding continuous global trait maps of over 30 ecologically-relevant plant traits with unprecedented accuracy at high spatial resolution (up to 1 km).
         </p>
       </section>
 
       <section id="methodology">
         <h2>Methodology</h2>
         <p>
-        Crowd-sourced vegetation occurrences from GBIF (which species observations from contains popular citizen science initiatives such as iNaturalist and Pl@ntNet, among many others) and curated plot-level species abundances from sPlot were matched with mean species trait values from the TRY Trait Database. Ensemble gradient-boosting models were trained for each trait as a function of environmental and Earth observation data.
+        Vegetation occurrences from citizen science sources (CIT) and vegetation plot surveys (SCI) were matched with mean trait values by species name with trait databases. This served to produce three training data sets (CIT, SCI, and a combination of the two) used to extrapolate community-level trait values as a function of environmental and Earth observation data. Ensemble gradient-boosting was used for trait modeling.
         <br><br>
         Earth observation datasets used as predictors include: MODIS surface reflectance, SoilGrids2.0 soil properties, WorldClim Bioclimatic variables, and the Vegetation Optical Depth Climate Archive (VODCA).
         </p>
@@ -410,10 +400,10 @@
         <h2>How to Cite</h2>
         <p>To cite this dataset, please use the following BibTeX entry:</p>
         <pre>
-        @misc{citscitraits2024dataset,
-          authors = {Daniel Lusk, Sophie Wolf, Daria Svidzinska, Jens Kattge, Francesco Maria Sabatini, Helge Bruelheide, Gabriella Damasceno, Álvaro Moreno Martínez, Teja Kattenborn},
+        @dataset{lusk_globaltraits_2025,
+          authors = {Daniel Lusk, Sophie Wolf, Daria Svidzinska, Jens Kattge, Teja Kattenborn},
           title = {Global, high-resolution plant trait maps combining citizen science and Earth observation},
-          year = {2024},
+          year = {2025},
           howpublished = {\url{https://kattenborn.go.bwsfs.uni-freiburg.de:11443/web/client/pubshares/2pxZ92URZ2jMdAuCxereHf/browse}}
         }
         </pre>
@@ -439,7 +429,7 @@
       </section>
       <footer>
         <p>
-          &copy; 2024 Daniel Lusk. All rights reserved.
+          &copy; 2025 Daniel Lusk. All rights reserved.
         </p>
       </footer>
     </div>
