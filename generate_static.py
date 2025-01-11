@@ -75,9 +75,9 @@ def generate_static_html():
             2: "Remote Sensing Centre for Earth System Research, Leipzig University, Germany",
             3: "German Centre for Integrative Biodiversity Research (iDiv) Halle-Jena-Leipzig, Germany",
             4: "Max Planck Institute for Biogeochemistry, Germany",
-            5: "Department of Biological, Geological and Environmental Sciences (BiGeA), Alma Mater Studiorum University of Bologna, Italy",
-            6: "Institute of Biology/Geobotany and Botanical Garden, Martin Luther University Halle-Wittenberg, Germany",
-            7: "Image Signal Processing Group, Image Processing Laboratory (IPL), University of Valencia, Spain",
+            # 5: "Department of Biological, Geological and Environmental Sciences (BiGeA), Alma Mater Studiorum University of Bologna, Italy",
+            # 6: "Institute of Biology/Geobotany and Botanical Garden, Martin Luther University Halle-Wittenberg, Germany",
+            # 7: "Image Signal Processing Group, Image Processing Laboratory (IPL), University of Valencia, Spain",
         },
         "buttons": [
             # {
