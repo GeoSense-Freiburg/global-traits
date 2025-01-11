@@ -135,13 +135,12 @@ def generate_static_html():
 
         """,
         "citation": """
-        @dataset{lusk_globaltraits_2025,
-          authors = {Daniel Lusk, Sophie Wolf, Daria Svidzinska, Jens Kattge, Teja Kattenborn},
-          title = {Global, high-resolution plant trait maps combining citizen science and Earth observation},
-          year = {2025},
-          howpublished = {\\url{https://kattenborn.go.bwsfs.uni-freiburg.de:11443/web/client/pubshares/2pxZ92URZ2jMdAuCxereHf/browse}}
-        }
-        """,
+@dataset{lusk_globaltraits_2025,
+    authors = {Daniel Lusk, Sophie Wolf, Daria Svidzinska, Jens Kattge, Teja Kattenborn},
+    title = {Global, high-resolution plant trait maps combining citizen science and Earth observation},
+    year = {2025},
+    howpublished = {\\url{https://kattenborn.go.bwsfs.uni-freiburg.de:11443/web/client/pubshares/2pxZ92URZ2jMdAuCxereHf/browse}}
+}""",
         "related_work": [
             {"title": "TRY Trait Database", "link": "https://www.try-db.org/"},
             {
