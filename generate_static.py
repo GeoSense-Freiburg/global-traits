@@ -106,9 +106,9 @@ def generate_static_html():
             #     "link": "https://github.com/username/dataset-source-code",
             # },
         ],
-        "image_title": "33 functional traits at 1 km resolution",
+        "image_title": "37 functional traits at 1 km resolution",
         "sample_image": "static/images/exemplar.png",
-        "image_caption": "Global mean plant height in meters at 0.01° (~1 km) resolution presented in Equal Earth projection.",
+        "image_caption": "Global mean plant height in meters at 1 km resolution presented in Equal Area Scalable Earth (EASE) projection.",
         "abstract": """
         Plant functional traits describe the form and function of plant communities and are vital to understanding the mechanics of the terrestrial biosphere, yet knowledge of their global distribution remains limited to specific regions and geographically restricted datasets. Meanwhile, rapidly growing citizen science initiatives have generated hundreds of millions of ground-level species observations across the globe. While previous studies have shown the integration of citizen science observations with large functional trait databases can enable the creation of global trait maps with promising accuracy, citizen science data alone remains insufficient to facilitate trait mapping at high resolutions due to noise caused by opportunistic collection practices. Recently curated aggregations of professional vegetation surveys offer higher-quality observations, but are comparatively few in number. Fortunately, large Earth observation datasets present an opportunity to help bridge these gaps due to their high resolution and global coverage. Here, we combine the multivariate strengths of citizen science, vegetation surveys, and Earth observation data to model the relationships between functional traits and their structural and environmental determinants, yielding continuous global trait maps of over 30 ecologically-relevant plant traits with unprecedented accuracy at high spatial resolution (up to 1 km).
         """,
