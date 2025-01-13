@@ -86,12 +86,12 @@ def generate_static_html():
             #     "icon": "file-alt",
             #     "link": "https://example.com/dataset-paper",
             # },
-            # {
-            #     "text": "App",
-            #     "alt": "View the dataset",
-            #     "icon": "earth-europe",
-            #     "link": "https://example.com/view-dataset-app",
-            # },
+            {
+                "text": "Data Viewer",
+                "alt": "View the dataset",
+                "icon": "earth-america",
+                "link": "https://global-traits.projects.earthengine.app/view/global-traits",
+            },
             {
                 "text": "Download",
                 "alt": "Download the dataset",
@@ -119,7 +119,7 @@ def generate_static_html():
         """,
         "methodology_image": "static/images/methodology.png",
         "usage_notes": """
-        Here you can find maps of 33 plant functional traits as defined in the <a href="https://www.try-db.org/" target="_blank" alt=TRY Plant Trait Database>TRY Plant Trait Database</a> with a resolution of 0.01°°(~1.1 km at the equator) and a global extent. The maps are extrapolations by ensemble models trained on ~40 million citizen science species observations from the <a href="https://www.gbif.org/" target="_blank" alt=Global Biodiversity Information Facility">Global Biodiversity Information Facility</a> as well as scientific species abundances recorded in the <a href="https://www.idiv.de/en/splot.html" target="_blank" alt="sPlot">sPlot</a> database in combination with TRY trait data and global Earth observation datasets.
+        Here you can find maps of 37 plant functional traits as defined in the <a href="https://www.try-db.org/" target="_blank" alt=TRY Plant Trait Database>TRY Plant Trait Database</a> with a resolution of 1 km and a global extent. The maps are extrapolations by ensemble models trained on ~40 million citizen science species observations from the <a href="https://www.gbif.org/" target="_blank" alt=Global Biodiversity Information Facility">Global Biodiversity Information Facility</a> as well as scientific species abundances recorded in the <a href="https://www.idiv.de/en/splot.html" target="_blank" alt="sPlot">sPlot</a> database in combination with TRY trait data and global Earth observation datasets.
         <br>
         <br>
         The current iteration of the trait maps includes traits sourced from plants across three major plant functional types (PFTs): shrubs, trees, and grasses. PFT-specific maps are in progress and will be available in the future.
