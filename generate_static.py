@@ -1,10 +1,11 @@
 """Flask web application to render the dataset homepage."""
 
 import os
-from pathlib import Path
 import shutil
-from flask import Flask, render_template
 from datetime import datetime
+from pathlib import Path
+
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -12,73 +13,16 @@ app = Flask(__name__)
 def generate_static_html():
     """Render the dataset homepage."""
     # Dataset information
+    authors, affiliations = read_authors_from_tsv()
+
+    # Create author string for citation from the authors list
+    author_names = [author["name"] for author in authors]
+    author_citation = ", ".join(author_names)
+
     dataset_info = {
-        "title": "Global, high-resolution plant trait maps combining citizen science and Earth observation",
-        "authors": [
-            {
-                "name": "Daniel Lusk",
-                "affiliation": 1,
-                "link": "https://uni-freiburg.de/enr-geosense/team/daniel_lusk/",
-                "orcid": "0009-0002-9745-5011",
-            },
-            {
-                "name": "Sophie Wolf",
-                "affiliation": 2,
-                "link": "https://www.uni-leipzig.de/en/profile/mitarbeiter/sophie-wolf",
-                "orcid": "0000-0001-7848-3725",
-            },
-            {
-                "name": "Daria Svidzinska",
-                "affiliation": 2,
-                "link": "https://www.researchgate.net/profile/Daria-Svidzinska",
-                "orcid": "0000-0002-1578-6312",
-            },
-            {
-                "name": "Jens Kattge",
-                "affiliation": "3,4",
-                "link": "https://www.bgc-jena.mpg.de/person/jkattge/4965278",
-                "orcid": "0000-0002-1022-8469",
-            },
-            # {
-            #     "name": "Francesco Maria Sabatini",
-            #     "affiliation": "3,5,6",
-            #     "link": "https://www.unibo.it/sitoweb/francescomaria.sabatini/en",
-            #     "orcid": "0000-0002-7202-7697",
-            # },
-            # {
-            #     "name": "Helge Bruelheide",
-            #     "affiliation": "6",
-            #     "link": "https://www.botanik.uni-halle.de/geobotanik/helge_bruelheide/",
-            #     "orcid": "0000-0003-3135-0356",
-            # },
-            # {
-            #     "name": "Gabriella Damasceno",
-            #     "affiliation": "3,6",
-            #     "link": "https://www.idiv.de/en/profile/1716.html",
-            #     "orcid": "0000-0001-5103-484X",
-            # },
-            # {
-            #     "name": "Álvaro Moreno Martínez",
-            #     "affiliation": 7,
-            #     "link": "https://www.researchgate.net/profile/Alvaro-Moreno-2",
-            #     "orcid": "0000-0003-2990-7768",
-            # },
-            {
-                "name": "Teja Kattenborn",
-                "affiliation": 1,
-                "link": "https://uni-freiburg.de/enr-geosense/team/kattenborn/",
-                "orcid": "0000-0001-7381-3828",
-            },
-        ],
-        "affiliations": {
-            1: "Sensor-based Geoinformatics, University of Freiburg, Germany",
-            2: "Remote Sensing Centre for Earth System Research, Leipzig University, Germany",
-            3: "German Centre for Integrative Biodiversity Research (iDiv) Halle-Jena-Leipzig, Germany",
-            4: "Max Planck Institute for Biogeochemistry, Germany",
-            # 5: "Department of Biological, Geological and Environmental Sciences (BiGeA), Alma Mater Studiorum University of Bologna, Italy",
-            # 6: "Institute of Biology/Geobotany and Botanical Garden, Martin Luther University Halle-Wittenberg, Germany",
-            # 7: "Image Signal Processing Group, Image Processing Laboratory (IPL), University of Valencia, Spain",
-        },
+        "title": "From smartphones to satellites: Uniting crowdsourced biodiversity monitoring and Earth observation to fill the gaps in global plant trait mapping",
+        "authors": authors,
+        "affiliations": affiliations,
         "buttons": [
             # {
             #     "text": "Paper",
@@ -106,11 +50,11 @@ def generate_static_html():
             #     "link": "https://github.com/username/dataset-source-code",
             # },
         ],
-        "image_title": "37 functional traits at 1 km resolution",
+        "image_title": "31 functional traits at 1 km resolution",
         "sample_image": "static/images/exemplar.png",
         "image_caption": "Global mean plant height in meters at 1 km resolution presented in Equal Area Scalable Earth (EASE) projection.",
         "abstract": """
-        Plant functional traits describe the form and function of plant communities and are vital to understanding the mechanics of the terrestrial biosphere, yet knowledge of their global distribution remains limited to specific regions and geographically restricted datasets. Meanwhile, rapidly growing citizen science initiatives have generated hundreds of millions of ground-level species observations across the globe. While previous studies have shown the integration of citizen science observations with large functional trait databases can enable the creation of global trait maps with promising accuracy, citizen science data alone remains insufficient to facilitate trait mapping at high resolutions due to noise caused by opportunistic collection practices. Recently curated aggregations of professional vegetation surveys offer higher-quality observations, but are comparatively few in number. Fortunately, large Earth observation datasets present an opportunity to help bridge these gaps due to their high resolution and global coverage. Here, we combine the multivariate strengths of citizen science, vegetation surveys, and Earth observation data to model the relationships between functional traits and their structural and environmental determinants, yielding continuous global trait maps of over 30 ecologically-relevant plant traits with unprecedented accuracy at high spatial resolution (up to 1 km).
+        Plant functional traits are fundamental to ecosystem dynamics and Earth system processes, but their global characterization is limited by the availability of field surveys and trait measurements. Recent expansions in biodiversity data aggregation, including large collections of vegetation surveys, citizen science observations, and trait measurements, offer new opportunities to overcome these constraints. Here we demonstrate that combining these diverse data sources with high-resolution Earth observation data enables accurate modeling of key plant traits at up to 1 km resolution. Our approach achieves high predictive power, reaching correlations up to 0.63 (15 of 31 traits exceeding 0.50) and improved spatial transferability, effectively bridging gaps in under-sampled regions. By capturing a broad range of traits with high spatial coverage, these maps can enhance our understanding of plant community properties and ecosystem functioning globally, and can serve as useful tools in modeling global biogeochemical processes and informing worldwide conservation efforts. Ultimately, our framework highlights the power and necessity of crowdsourced biodiversity data in high-resolution plant trait modeling. We anticipate that advancements in biodiversity data collection and remote sensing capabilities will further refine global trait mapping, fostering a dynamic trait-based understanding of the biosphere.
         """,
         "methodology": """
         Vegetation occurrences from citizen science sources (CIT) and vegetation plot surveys (SCI) were matched with mean trait values by species name with trait databases. This served to produce three training data sets (CIT, SCI, and a combination of the two) used to extrapolate community-level trait values as a function of environmental and Earth observation data. Ensemble gradient-boosting was used for trait modeling.
@@ -119,10 +63,10 @@ def generate_static_html():
         """,
         "methodology_image": "static/images/methodology.png",
         "usage_notes": """
-        Here you can find maps of 37 plant functional traits as defined in the <a href="https://www.try-db.org/" target="_blank" alt=TRY Plant Trait Database>TRY Plant Trait Database</a> with a resolution of 1 km and a global extent. The maps are extrapolations by ensemble models trained on ~40 million citizen science species observations from the <a href="https://www.gbif.org/" target="_blank" alt=Global Biodiversity Information Facility">Global Biodiversity Information Facility</a> as well as scientific species abundances recorded in the <a href="https://www.idiv.de/en/splot.html" target="_blank" alt="sPlot">sPlot</a> database in combination with TRY trait data and global Earth observation datasets.
+        Here you can find maps of 31 plant functional traits as defined in the <a href="https://www.try-db.org/" target="_blank" alt=TRY Plant Trait Database>TRY Plant Trait Database</a> with a resolution of 1 km and a global extent. The maps are extrapolations by ensemble models trained on ~40 million citizen science species observations from the <a href="https://www.gbif.org/" target="_blank" alt=Global Biodiversity Information Facility">Global Biodiversity Information Facility</a> as well as scientific species abundances recorded in the <a href="https://www.idiv.de/en/splot.html" target="_blank" alt="sPlot">sPlot</a> database in combination with TRY trait data and global Earth observation datasets.
         <br>
         <br>
-        The current iteration of the trait maps includes traits sourced from plants across three major plant functional types (PFTs): shrubs, trees, and grasses. PFT-specific maps are in progress and will be available in the future.
+        The current iteration of the trait maps includes traits sourced from plants across three major plant functional types (PFTs): shrubs, trees, and grasses. PFT-specific maps are in progress and will be available soon.
         <br>
         <br>
         For questions, please contact Daniel Lusk (<a href="mailto:daniel.lusk@geosense.uni-freiburg.de">daniel.lusk [at] geosense.uni-freiburg.de</a>).
@@ -134,13 +78,13 @@ def generate_static_html():
             <li><a href="https://gepris-extern.dfg.de/gepris/projekt/504978936?language=en" target="_blank">https://gepris-extern.dfg.de/gepris/projekt/504978936?language=en</a></li>
 
         """,
-        "citation": """
-@dataset{lusk_globaltraits_2025,
-    authors = {Daniel Lusk, Sophie Wolf, Daria Svidzinska, Jens Kattge, Teja Kattenborn},
-    title = {Global, high-resolution plant trait maps combining citizen science and Earth observation},
-    year = {2025},
-    howpublished = {\\url{https://kattenborn.go.bwsfs.uni-freiburg.de:11443/web/client/pubshares/2pxZ92URZ2jMdAuCxereHf/browse}}
-}""",
+        "citation": f"""
+@dataset{{lusk_globaltraits_2025,
+    authors = {{{author_citation}}},
+    title = {{From smartphones to satellites: Uniting crowdsourced biodiversity monitoring and Earth observation to fill the gaps in global plant trait mapping}},
+    year = {{2025}},
+    howpublished = {{\\url{{https://kattenborn.go.bwsfs.uni-freiburg.de:11443/web/client/pubshares/2pxZ92URZ2jMdAuCxereHf/browse}}}}
+}}""",
         "related_work": [
             {"title": "TRY Trait Database", "link": "https://www.try-db.org/"},
             {
@@ -173,6 +117,100 @@ def generate_static_html():
         shutil.copytree(static_src_dir, static_dest_dir)
 
         print(f"Static site generated at: {output_dir}/index.html")
+
+
+def read_authors_from_tsv():
+    """Read author and affiliation information from the TSV file using pandas."""
+    from pathlib import Path
+
+    import pandas as pd
+
+    authors = []
+    affiliations = {}
+    affiliation_map = {}  # Maps affiliation name to ID
+    affiliation_counter = 1
+
+    tsv_path = Path("./static/authors.tsv")
+
+    # Read TSV file using pandas
+    df = pd.read_csv(tsv_path, sep="\t", encoding="utf-8")
+
+    for _, row in df.iterrows():
+        # Extract information
+        email = row["Email"]
+        first_name = row["First Name"]
+        middle_name = (
+            row.get("Middle Name(s)/Initial(s)", "")
+            if "Middle Name(s)/Initial(s)" in df.columns
+            else ""
+        )
+        middle_name = str(middle_name).strip() if not pd.isna(middle_name) else ""
+        last_name = row["Last Name"]
+        orcid = row.get("ORCiD", "") if "ORCiD" in df.columns else ""
+        orcid = str(orcid).strip() if not pd.isna(orcid) else ""
+        affiliation1 = str(row["Affiliation 1"]).strip()
+        affiliation2 = (
+            row.get("Affiliation 2", "") if "Affiliation 2" in df.columns else ""
+        )
+        affiliation2 = str(affiliation2).strip() if not pd.isna(affiliation2) else ""
+        link = row["Link"] if not pd.isna(row["Link"]) else ""
+
+        # Construct full name
+        full_name = first_name
+        if middle_name:
+            full_name += f" {middle_name}"
+        full_name += f" {last_name}"
+
+        # Process affiliations
+        author_affiliations = []
+
+        # Handle first affiliation
+        if affiliation1:
+            if affiliation1 not in affiliation_map:
+                affiliation_map[affiliation1] = affiliation_counter
+                affiliations[affiliation_counter] = affiliation1
+                affiliation_counter += 1
+            author_affiliations.append(str(affiliation_map[affiliation1]))
+
+        # Handle second affiliation if present
+        if affiliation2:
+            if affiliation2 not in affiliation_map:
+                affiliation_map[affiliation2] = affiliation_counter
+                affiliations[affiliation_counter] = affiliation2
+                affiliation_counter += 1
+            author_affiliations.append(str(affiliation_map[affiliation2]))
+
+        # Combine affiliations with comma
+        affiliation_str = ",".join(author_affiliations)
+        # if len(author_affiliations) > 1:
+        #     # Add quotes if multiple affiliations (for display purposes)
+        #     affiliation_str = f'{affiliation_str}"'
+
+        # Create author entry
+        # Use email domain to guess a link if needed
+        # email_domain = email.split("@")[1] if "@" in email else ""
+        # link = ""
+
+        # if "uni-freiburg.de" in email_domain:
+        #     link = f"https://uni-freiburg.de/profile/{email.split('@')[0]}"
+        # elif "idiv" in email_domain:
+        #     link = f"https://www.idiv.de/en/profile/{last_name.lower()}.html"
+        # elif "bgc-jena" in email_domain or "mpg" in email_domain:
+        #     link = f"https://www.bgc-jena.mpg.de/person/{last_name.lower()}"
+        # else:
+        #     # Default to ResearchGate as fallback
+        #     link = f"https://www.researchgate.net/profile/{first_name}-{last_name}"
+
+        author = {
+            "name": full_name,
+            "affiliation": affiliation_str,
+            "link": link,
+            "orcid": orcid if orcid else "",
+        }
+
+        authors.append(author)
+
+    return authors, affiliations
 
 
 if __name__ == "__main__":
