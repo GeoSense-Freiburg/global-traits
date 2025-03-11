@@ -41,14 +41,14 @@ def generate_static_html():
                 "alt": "Download the dataset",
                 # "icon": "database",
                 "icon": "download",
-                "link": "https://kattenborn.go.bwsfs.uni-freiburg.de:11443/web/client/pubshares/2pxZ92URZ2jMdAuCxereHf/browse",
+                "link": "https://zenodo.org/records/14646322",
             },
-            # {
-            #     "text": "Code",
-            #     "alt": "View the source code",
-            #     "icon": "code-branch",
-            #     "link": "https://github.com/username/dataset-source-code",
-            # },
+            {
+                "text": "GitHub",
+                "alt": "View the source code",
+                "icon": "code-branch",
+                "link": "https://github.com/GeoSense-Freiburg/cit-sci-traits",
+            },
         ],
         "image_title": "31 functional traits at 1 km resolution",
         "sample_image": "static/images/exemplar.png",
@@ -78,13 +78,20 @@ def generate_static_html():
             <li><a href="https://gepris-extern.dfg.de/gepris/projekt/504978936?language=en" target="_blank">https://gepris-extern.dfg.de/gepris/projekt/504978936?language=en</a></li>
 
         """,
-        "citation": f"""
-@dataset{{lusk_globaltraits_2025,
-    authors = {{{author_citation}}},
-    title = {{From smartphones to satellites: Uniting crowdsourced biodiversity monitoring and Earth observation to fill the gaps in global plant trait mapping}},
-    year = {{2025}},
-    howpublished = {{\\url{{https://kattenborn.go.bwsfs.uni-freiburg.de:11443/web/client/pubshares/2pxZ92URZ2jMdAuCxereHf/browse}}}}
-}}""",
+        "citation": """
+        @dataset{lusk_global_2025,
+            title = {Global plant trait maps based on crowdsourced biodiversity monitoring and Earth observation - 1 km - All {PFTs}},
+            url = {https://zenodo.org/records/14646322},
+            doi = {10.5281/zenodo.14646322},
+            abstract = {Global, high-resolution plant trait maps based on crowdsourced biodiversity monitoring and Earth observation},
+            version = {1.0.0},
+            publisher = {Zenodo},
+            author = {Lusk, Daniel and Wolf, Sophie and Svidzinska, Daria and Kattenborn, Teja},
+            urldate = {2025-03-11},
+            date = {2025-03-10},
+            keywords = {1-km, Citizen science, Earth observation, Functional ecology, Global maps, notion, Plant traits},
+            file = {Snapshot:/home/daniel/Zotero/storage/R396Z8PR/14646322.html:text/html},
+        }""",
         "related_work": [
             {"title": "TRY Trait Database", "link": "https://www.try-db.org/"},
             {
