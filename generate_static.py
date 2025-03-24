@@ -24,12 +24,12 @@ def generate_static_html():
         "authors": authors,
         "affiliations": affiliations,
         "buttons": [
-            # {
-            #     "text": "Paper",
-            #     "alt": "Read the paper",
-            #     "icon": "file-alt",
-            #     "link": "https://example.com/dataset-paper",
-            # },
+            {
+                "text": "Preprint",
+                "alt": "Read the paper",
+                "icon": "file-alt",
+                "link": "http://dx.doi.org/10.1101/2025.03.10.641660",
+            },
             {
                 "text": "Data Viewer",
                 "alt": "View the dataset",
