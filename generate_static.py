@@ -66,7 +66,10 @@ def generate_static_html():
         Here you can find maps of 31 plant functional traits as defined in the <a href="https://www.try-db.org/" target="_blank" alt=TRY Plant Trait Database>TRY Plant Trait Database</a> with a resolution of 1 km and a global extent. The maps are extrapolations by ensemble models trained on ~40 million citizen science species observations from the <a href="https://www.gbif.org/" target="_blank" alt=Global Biodiversity Information Facility">Global Biodiversity Information Facility</a> as well as scientific species abundances recorded in the <a href="https://www.idiv.de/en/splot.html" target="_blank" alt="sPlot">sPlot</a> database in combination with TRY trait data and global Earth observation datasets.
         <br>
         <br>
-        The current iteration of the trait maps includes traits sourced from plants across three major plant functional types (PFTs): shrubs, trees, and grasses. PFT-specific maps are in progress and will be available soon.
+        The trait maps can be obtained and visualized using the following resources. In addition to using the coefficient of variation and area of applicability layers of the maps, we encourage all who wish to use these maps to take particular note of the model performance for the traits of interest, which can be found both in the raster metadata as well as in Table A.1 of the manuscript. The model performance varies significantly across the traits, and so care should be used.
+        <br>
+        <br>
+        The current iteration of the trait maps includes traits sourced from plants across three major plant functional types (PFTs): shrubs, trees, and grasses. PFT-specific maps, as well as quantile maps, are in progress and will be available soon.
         <br>
         <br>
         For questions, please contact Daniel Lusk (<a href="mailto:daniel.lusk@geosense.uni-freiburg.de">daniel.lusk [at] geosense.uni-freiburg.de</a>).
