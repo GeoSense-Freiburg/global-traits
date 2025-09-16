@@ -1,18 +1,12 @@
-[tool.poetry]
+[project]
 name = "cit-sci-traits-2024-page"
 version = "0.1.0"
 description = ""
-authors = ["Daniel Lusk <daniel.lusk@geosense.uni-freiburg.de>"]
-license = "CC BY 4.0"
 readme = "README.md"
-package-mode = false
-
-[tool.poetry.dependencies]
-python = "^3.12"
-flask = "^3.0.3"
-pandas = "^2.2.3"
-
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires-python = ">=3.12,<4.0"
+license = { text = "CC BY 4.0" }
+authors = [ { name = "Daniel Lusk", email = "daniel.lusk@geosense.uni-freiburg.de" } ]
+dependencies = [
+    "flask>=3.1.2",
+    "pandas>=2.3.2",
+]
