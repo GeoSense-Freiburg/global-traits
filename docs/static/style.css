@@ -249,6 +249,7 @@ section h2 {
   padding: 1.2rem;
   background-color: #00000047;
   border-radius: 9px;
+  padding-left: 0;
 }
 
 /* Related Work */
@@ -277,11 +278,25 @@ section h2 {
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: 1.7rem;
+    line-height: 2rem;
   }
 
   h2 {
     font-size: 1.5rem;
+  }
+
+  .authors {
+    font-size: 0.7rem;
+    line-height: 0.9rem;
+  }
+
+  table {
+    font-size: 0.7rem;
+  }
+
+  .authors sup {
+    font-size: 0.5rem;
   }
 
   .links ul {
@@ -313,6 +328,20 @@ section h2 {
 
   .img-container > figcaption {
     font-size: 0.8rem;
+  }
+
+  #citation > pre {
+    font-size: 0.6rem;
+    padding: 0.8rem;
+    padding-left: 0;
+  }
+
+  .affiliations {
+    font-size: 0.6rem;
+  }
+
+  .footer > p {
+    font-size: 0.9rem;
   }
 }
 
