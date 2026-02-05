@@ -112,6 +112,20 @@ table tr:nth-child(even) {
   text-align: right;
 }
 
+/* DOI Badge */
+.doi-badge {
+  display: inline-block;
+  margin-top: 0.8rem;
+}
+
+.doi-badge img {
+  height: 1.4rem;
+}
+
+.doi-badge:hover {
+  opacity: 0.85;
+}
+
 /* Authors */
 .authors {
   margin-top: 2rem;
@@ -241,15 +255,43 @@ section h2 {
 }
 
 /* Citation */
-#citation > pre {
-  /* background-color: #f1f1f1; */
+.citation-block {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.citation-block pre {
   font-family: monospace;
   font-size: 0.9rem;
   overflow-x: auto;
   padding: 1.2rem;
+  padding-left: 1.5rem;
   background-color: #00000047;
   border-radius: 9px;
-  padding-left: 0;
+  margin: 0;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #eaeaea;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-family: "Fira Sans", sans-serif;
+  transition: background 0.2s;
+}
+
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.copy-btn i {
+  margin-right: 0.3rem;
 }
 
 /* Related Work */
@@ -291,6 +333,10 @@ section h2 {
     line-height: 0.9rem;
   }
 
+  .doi-badge img {
+    height: 1.1rem;
+  }
+
   table {
     font-size: 0.7rem;
   }
@@ -330,10 +376,15 @@ section h2 {
     font-size: 0.8rem;
   }
 
-  #citation > pre {
+  .citation-block pre {
     font-size: 0.6rem;
     padding: 0.8rem;
-    padding-left: 0;
+    padding-left: 1rem;
+  }
+
+  .copy-btn {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.4rem;
   }
 
   .affiliations {

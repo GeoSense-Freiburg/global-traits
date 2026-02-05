@@ -20,15 +20,16 @@ def generate_static_html():
     author_citation = ", ".join(author_names)
 
     dataset_info = {
-        "title": "From smartphones to satellites: Uniting crowdsourced biodiversity monitoring and Earth observation to fill the gaps in global plant trait mapping",
+        "title": "Crowdsourced biodiversity monitoring fills gaps in global plant trait mapping",
+        "doi": "10.1038/s41467-026-68996-y",
         "authors": authors,
         "affiliations": affiliations,
         "buttons": [
             {
-                "text": "Preprint",
+                "text": "Paper",
                 "alt": "Read the paper",
                 "icon": "file-alt",
-                "link": "http://dx.doi.org/10.1101/2025.03.10.641660",
+                "link": "https://doi.org/10.1038/s41467-026-68996-y",
             },
             {
                 "text": "Data Viewer",
@@ -81,21 +82,38 @@ def generate_static_html():
             <li><a href="https://gepris-extern.dfg.de/gepris/projekt/504978936?language=en" target="_blank">https://gepris-extern.dfg.de/gepris/projekt/504978936?language=en</a></li>
 
         """,
-        "citation": """
-        @dataset{lusk_global_2025,
-            title = {Global plant trait maps based on crowdsourced biodiversity monitoring and Earth observation - 1 km - All {PFTs}},
-            url = {https://zenodo.org/records/14646322},
-            doi = {10.5281/zenodo.14646322},
-            abstract = {Global, high-resolution plant trait maps based on crowdsourced biodiversity monitoring and Earth observation},
-            version = {1.0.0},
-            publisher = {Zenodo},
-            author = {Lusk, Daniel and Wolf, Sophie and Svidzinska, Daria and Kattenborn, Teja},
-            urldate = {2025-03-11},
-            date = {2025-03-10},
-            keywords = {1-km, Citizen science, Earth observation, Functional ecology, Global maps, notion, Plant traits},
-            file = {Snapshot:/home/daniel/Zotero/storage/R396Z8PR/14646322.html:text/html},
-        }""",
+        "paper_citation": """@article{lusk_crowdsourced_2026,
+    title = {Crowdsourced biodiversity monitoring fills gaps in global plant trait mapping},
+    volume = {17},
+    copyright = {2026 The Author(s)},
+    issn = {2041-1723},
+    url = {https://www.nature.com/articles/s41467-026-68996-y},
+    doi = {10.1038/s41467-026-68996-y},
+    language = {en},
+    number = {1},
+    urldate = {2026-02-05},
+    journal = {Nature Communications},
+    publisher = {Nature Publishing Group},
+    author = {Lusk, Daniel and Wolf, Sophie and Svidzinska, Daria and Dormann, Carsten F. and Kattge, Jens and Bruelheide, Helge and Sabatini, Francesco Maria and Damasceno, Gabriella and Moreno Martínez, Álvaro and Violle, Cyrille and Hending, Daniel and Hähn, Georg J. A. and Tabeni, Solana and Phartyal, Shyam and Gonçalves, Fernando and Kreft, Holger and Schmidt, Marco and Chen, Han and Güler, Behlül and Dolezal, Jiri and Pielech, Remigiusz and Guido, Anaclara and Dwyer, Ciara and Napoleone, Francesca and Willie, Jacob and Gasper, André Luís and Macía, Manuel J. and Chytry, Milan and Lenoir, Jonathan and Thakur, Dinesh and Dengler, Jürgen and Świerszcz, Sebastian and Altman, Jan and Mucina, Ladislav and Nerlekar, Ashish N. and Kakinuma, Kaoru and Rawat, Pravin and Stančić, Zvjezdana and Testolin, Riccardo and Hatim, Mohamed Z. and Rodrigues, Flávio and Homeier, Jürgen and Marques, Marcia C. M. and McCarthy, James K. and El-Sheikh, M. A. and Korznikov, Kirill and Gerberding, Kilian and Kattenborn, Teja},
+    month = jan,
+    year = {2026},
+    pages = {1203},
+}""",
+        "dataset_citation": """@dataset{lusk_2026_14646322,
+    author = {Lusk, Daniel and Wolf, Sophie and Svidzinska, Daria and Kattenborn, Teja},
+    title = {Global plant trait maps based on crowdsourced biodiversity monitoring and Earth observation - 1 km - All PFTs},
+    month = jan,
+    year = {2026},
+    publisher = {Zenodo},
+    version = {1.0.0},
+    doi = {10.5281/zenodo.14646322},
+    url = {https://doi.org/10.5281/zenodo.14646322},
+}""",
         "related_work": [
+            {
+                "title": "Wolf et al. (2022) - Citizen science plant observations encode global trait patterns",
+                "link": "https://www.nature.com/articles/s41559-022-01904-x",
+            },
             {"title": "TRY Trait Database", "link": "https://www.try-db.org/"},
             {
                 "title": "Global Biodiversity Information Facility",
