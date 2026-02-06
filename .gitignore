@@ -268,3 +268,6 @@ pyrightconfig.json
 __pycache__/
 # Do not ignore the docs folder (used by GitHub Pages)
 !docs/
+
+# Node
+node_modules/

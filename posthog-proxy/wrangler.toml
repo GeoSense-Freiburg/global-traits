@@ -1,0 +1,8 @@
+name = "posthog-proxy"
+main = "src/worker.js"
+compatibility_date = "2025-01-01"
+
+[env.production]
+routes = [
+  { pattern = "e.planttraits.earth/*", zone_name = "planttraits.earth" }
+]
