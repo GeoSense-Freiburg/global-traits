@@ -40,6 +40,22 @@
     <link rel="stylesheet" href="static/style.css" />
   </head>
   <body>
+    <button class="toc-toggle" id="toc-toggle" aria-label="Toggle table of contents" aria-expanded="false">
+      <i class="fas fa-bars"></i>
+    </button>
+    <nav class="toc-sidebar" id="toc-sidebar" aria-label="Table of contents">
+      <div class="toc-content">
+        <h3 class="toc-heading">Contents</h3>
+        <ul class="toc-list">
+          <li><a href="#sample-image" class="toc-link" data-section="sample-image">Trait Maps</a></li>
+          <li><a href="#abstract" class="toc-link" data-section="abstract">Abstract</a></li>
+          <li><a href="#methodology" class="toc-link" data-section="methodology">Methodology</a></li>
+          <li><a href="#usage-notes" class="toc-link" data-section="usage-notes">Usage Notes</a></li>
+          <li><a href="#citation" class="toc-link" data-section="citation">How to Cite</a></li>
+          <li><a href="#related-work" class="toc-link" data-section="related-work">Related Work</a></li>
+        </ul>
+      </div>
+    </nav>
     <div class="container">
       <header>
         <h1 class="title">{{ dataset.title }}</h1>
@@ -420,6 +436,71 @@
           }, 2000);
         });
       }
+    </script>
+    <script>
+      // ToC toggle
+      (function () {
+        var sidebar = document.getElementById('toc-sidebar');
+        var toggle = document.getElementById('toc-toggle');
+        var backdrop = document.createElement('div');
+        backdrop.className = 'toc-backdrop';
+        document.body.appendChild(backdrop);
+
+        function open() {
+          sidebar.classList.add('open');
+          backdrop.classList.add('visible');
+          toggle.setAttribute('aria-expanded', 'true');
+          toggle.innerHTML = '<i class="fas fa-times"></i>';
+        }
+        function close() {
+          sidebar.classList.remove('open');
+          backdrop.classList.remove('visible');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+
+        toggle.addEventListener('click', function () {
+          sidebar.classList.contains('open') ? close() : open();
+        });
+        backdrop.addEventListener('click', close);
+        sidebar.querySelectorAll('.toc-link').forEach(function (link) {
+          link.addEventListener('click', function () {
+            if (window.innerWidth <= 1250) close();
+          });
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && sidebar.classList.contains('open')) close();
+        });
+      })();
+
+      // ToC active section highlighting
+      (function () {
+        var tocLinks = document.querySelectorAll('.toc-link');
+        var sections = Array.from(tocLinks)
+          .map(function (l) { return document.getElementById(l.dataset.section); })
+          .filter(Boolean);
+        var activeLink = null;
+
+        function setActive(id) {
+          if (activeLink) activeLink.classList.remove('active');
+          var link = document.querySelector('.toc-link[data-section="' + id + '"]');
+          if (link) { link.classList.add('active'); activeLink = link; }
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+          var best = null;
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              if (!best || entry.boundingClientRect.top < best.boundingClientRect.top) {
+                best = entry;
+              }
+            }
+          });
+          if (best) setActive(best.target.id);
+        }, { rootMargin: '0px 0px -70% 0px', threshold: 0 });
+
+        sections.forEach(function (s) { observer.observe(s); });
+      })();
     </script>
   </body>
 </html>

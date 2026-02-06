@@ -5,6 +5,14 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 2rem;
+}
+
 /* Global Styles */
 body {
   font-family: "Fira Sans", "Roboto", sans-serif;
@@ -18,6 +26,7 @@ body {
   justify-content: center;
   min-height: 100vh;
   position: relative;
+  overflow-x: hidden;
 }
 
 /* Subtle noise texture overlay */
@@ -484,5 +493,207 @@ section h2::after {
 @media (min-width: 1050px) {
   .img-title {
     top: -1rem;
+  }
+}
+
+/* ==================== */
+/* Table of Contents    */
+/* ==================== */
+
+.toc-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 220px;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 15vh;
+  pointer-events: none;
+}
+
+.toc-content {
+  pointer-events: auto;
+  padding: 1.5rem 1rem 1.5rem 1.5rem;
+}
+
+.toc-heading {
+  font-family: "Fira Sans", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(148, 203, 215, 0.6);
+  margin-bottom: 1rem;
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-list li {
+  margin-bottom: 0.2rem;
+}
+
+.toc-link {
+  display: block;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: rgba(234, 234, 234, 0.8);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  border-radius: 0 4px 4px 0;
+  transition: all 0.2s ease;
+}
+
+.toc-link:hover {
+  color: rgb(178, 223, 235);
+  background: rgba(148, 203, 215, 0.08);
+  text-decoration: none;
+}
+
+.toc-link:visited {
+  color: rgba(234, 234, 234, 0.8);
+}
+
+.toc-link.active {
+  color: rgb(148, 203, 215);
+  border-left-color: rgb(148, 203, 215);
+  background: rgba(148, 203, 215, 0.1);
+  font-weight: 500;
+}
+
+.toc-link.active:visited {
+  color: rgb(148, 203, 215);
+}
+
+.toc-toggle {
+  display: none;
+  pointer-events: auto;
+}
+
+/* ToC backdrop overlay */
+.toc-backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 40;
+}
+
+.toc-backdrop.visible {
+  display: block;
+}
+
+/* Medium screens: collapse to toggle button */
+@media (max-width: 1250px) and (min-width: 769px) {
+  .toc-sidebar {
+    width: 0;
+    transition: width 0.3s ease;
+  }
+
+  .toc-content {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+  }
+
+  .toc-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    z-index: 60;
+    width: 40px;
+    height: 40px;
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(148, 203, 215, 0.2);
+    border-radius: 8px;
+    color: rgba(148, 203, 215, 0.8);
+    font-size: 1rem;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: background 0.2s ease;
+  }
+
+  .toc-toggle:hover {
+    background: rgba(148, 203, 215, 0.15);
+  }
+
+  .toc-sidebar.open {
+    width: 220px;
+  }
+
+  .toc-sidebar.open .toc-content {
+    opacity: 1;
+    pointer-events: auto;
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-right: 1px solid rgba(148, 203, 215, 0.15);
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
+}
+
+/* Mobile: off-screen overlay */
+@media (max-width: 768px) {
+  .toc-sidebar {
+    width: 260px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding-top: 4rem;
+    justify-content: flex-start;
+  }
+
+  .toc-content {
+    background: none;
+    border: none;
+    border-radius: 0;
+  }
+
+  .toc-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .toc-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    width: 40px;
+    height: 40px;
+    z-index: 60;
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(148, 203, 215, 0.25);
+    border-radius: 8px;
+    color: rgba(148, 203, 215, 0.8);
+    font-size: 1rem;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: background 0.2s ease;
+  }
+
+  .toc-toggle:hover {
+    background: rgba(148, 203, 215, 0.15);
   }
 }
