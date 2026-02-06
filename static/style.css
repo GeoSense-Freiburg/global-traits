@@ -363,6 +363,41 @@ section h2::after {
   text-decoration: underline;
 }
 
+/* Floating Explore Button */
+.floating-explore {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: linear-gradient(135deg, rgba(0, 100, 180, 0.4), rgba(63, 150, 140, 0.4));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 203, 215, 0.25);
+  color: white;
+  padding: 0.7rem 1.2rem;
+  border-radius: 2rem;
+  font-family: "Fira Sans", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.floating-explore:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(148, 203, 215, 0.3);
+  text-decoration: none;
+  color: white;
+}
+
+.floating-explore:visited {
+  color: white;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .container {
